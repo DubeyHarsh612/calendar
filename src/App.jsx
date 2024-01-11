@@ -1,15 +1,10 @@
-import TimeZoneInfo from "./Components/TimeZoneInfo";
-import WeekNavigationButtons from "./Components/WeekNavigationButtons";
+import React from "react";
+import WeeklySchedule from "./Components/WeeklySchedule";
 
 function App() {
   return (
-    <div className="container ">
-      <div className="btnstime">
-        <WeekNavigationButtons />
-      </div>
-
-      <hr />
-      <TimeZoneInfo />
+    <div className="container">
+      <WeeklySchedule />
       <hr />
     </div>
   );

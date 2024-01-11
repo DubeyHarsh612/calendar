@@ -1,72 +1,79 @@
 .timezone-controls {
-    display: flex;
-    align-items: center;
+  display: flex;
+  align-items: center;
   margin-bottom: 20px;
 }
 
-/* Add any additional styling as needed */
+
 
 hr {
   border-top: 1px solid #4e2020;
   margin: 10px 0;
 }
 
-/* WeekdaysList.css */
+
 
 
 .weekday-container {
   display: flex;
-  justify-content: space-between;
+  justify-content: flex-start;
+  min-height: 5rem;
+
   align-items: center;
-  
-  width: 50%;
-  margin-bottom: 20px; /* Adjust as needed */
+  margin-bottom: 20px;
+  width: 100%;
 }
 
 .weekday-header {
   display: flex;
   align-items: center;
-  background-color:rgb(217, 234, 234);
+  background-color: rgb(217, 234, 234);
   overflow: auto;
-  width: 4rem;
+  width: 8rem;
 }
 
 .checkbox-container {
   display: flex;
-  width: 50rem;
   flex-wrap: wrap;
-  
-  margin-top: 10px; /* Adjust as needed */
+  width: 50%;
+  margin-left: 2rem;
+  margin-top: 10px;
 }
 
 .checkbox {
-  justify-content: space-evenly;
   margin: 0.3rem;
-  
-  
 }
 
-/* Add any additional styling as needed */
+
+
+
 
 .hr-line {
-  border-top: 1px solid #ddd; /* Adjust the color and style as needed */
-  margin-top: 10px; /* Adjust the margin as needed */
+  border-top: 1px solid #ddd;
+  margin-top: 10px;
 }
-.statuss{
-  margin-left: -50rem;
-}
-.check{
+
+.check {
   border: 2px solid rgb(155, 155, 196);
 }
 
-.time-zone{
+.time-zone {
   width: 100%;
   height: 2rem;
+  min-height: 2rem;
 }
 
-.week-navigation-buttons{
+.week-navigation-buttons {
   display: flex;
   justify-content: space-between;
-  width: 100%;
+  width: 95%;
+  margin: 1rem;
+
 }
 
+.btns {
+  color: blue;
+  background-color: transparent;
+  border: white;
+  cursor: pointer;
+}
