@@ -10,7 +10,10 @@ const WeekNavigationButtons = ({
     <button onClick={previousWeek} className="btns">
       ⬅ Previous Week
     </button>
-    <button onClick={handleCurrentWeek}> {formattedDate} </button>
+    <button onClick={handleCurrentWeek} className="calendarbtn">
+      {" "}
+      {formattedDate}{" "}
+    </button>
     <button onClick={nextWeek} className="btns">
       Next Week ➡
     </button>

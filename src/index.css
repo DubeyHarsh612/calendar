@@ -77,3 +77,9 @@ hr {
   border: white;
   cursor: pointer;
 }
+
+.calendarbtn {
+  border: transparent;
+  background-color: transparent;
+  cursor: pointer;
+}
