@@ -20,30 +20,29 @@ const WeekdaysList = ({ weekdays, schedule }) => {
       const formattedHour = hour > 12 ? hour - 12 : hour;
       const formattedMinutes = "00";
 
+      const uniqueIdentifier = `${day.formattedDate}-${hour}`;
+
       checkboxes.push(
-        <div key={`${day.formattedDate}-${hour}`} className="checkbox">
-          <input
-            type="checkbox"
-            id={`${day.formattedDate}-${hour}`}
-            name={`${day.formattedDate}-${hour}`}
-          />
-          <label htmlFor={`${day.formattedDate}-${hour}`}>
-            {`${formattedHour}:${formattedMinutes} ${ampm}`}
+        <div key={uniqueIdentifier} className="checkbox">
+          <input type="checkbox" id={`checkbox-${uniqueIdentifier}`} />
+          <label htmlFor={`checkbox-${uniqueIdentifier}`}>
+            {`${hour > 12 ? hour - 12 : hour}:00 ${hour >= 12 ? "PM" : "AM"}`}
           </label>
         </div>
       );
 
       if (hour < endTime) {
+        const identifier = `${day.formattedDate}-${hour}`;
         checkboxes.push(
-          <div key={`${day.formattedDate}-${hour}-30`} className="checkbox">
+          <div key={`${identifier}-30`} className="checkbox">
             <input
               type="checkbox"
-              id={`${day.formattedDate}-${hour}-30`}
-              name={`${day.formattedDate}-${hour}-30`}
+              id={`hcb-${identifier}`}
+              name={`hcb-${identifier}`}
             />
-            <label htmlFor={`${day.formattedDate}-${hour}-30`}>
-              {`${formattedHour}:30 ${ampm}`}
-            </label>
+            <label
+              htmlFor={`hcb-${identifier}`}
+            >{`${formattedHour}:30 ${ampm}`}</label>
           </div>
         );
       }
@@ -66,19 +65,22 @@ const WeekdaysList = ({ weekdays, schedule }) => {
           <div className="checkbox-container">
             {presentDates.has(day.formattedDate.split(", ")[1]) ? (
               <div className="checkbox">
-                <input
-                  type="checkbox"
-                  id={`present-${day.formattedDate}`}
-                  name={`present-${day.formattedDate}`}
-                  checked
-                />
                 <label htmlFor={`present-${day.formattedDate}`}>
                   {schedule
                     .filter(
                       (entry) => entry.Date === day.formattedDate.split(", ")[1]
                     )
-                    .map((entry) => entry.Time)
-                    .join(", ")}
+                    .map((entry, index) => (
+                      <span key={index}>
+                        <input
+                          type="checkbox"
+                          id={`present-${day.formattedDate}-${index}`}
+                          name={`present-${day.formattedDate}`}
+                          checked
+                        />
+                        {`  ${entry.Time}`}
+                      </span>
+                    ))}
                 </label>
               </div>
             ) : day.status === "past" ? (

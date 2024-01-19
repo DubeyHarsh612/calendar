@@ -12,7 +12,7 @@ const WeeklySchedule = () => {
     new Date(
       currentDateTime.getFullYear(),
       currentDateTime.getMonth(),
-      currentDateTime.getDate() - ((currentDateTime.getDay() + 5) % 7) + 1
+      currentDateTime.getDate()
     )
   );
 
@@ -32,9 +32,10 @@ const WeeklySchedule = () => {
         hour12: false,
       };
 
-      const sydneyTime = currentDateTime
-        .toLocaleString("en-US", { ...options, timeZone: "Australia/Sydney" })
-        .replace(/\u200E/g, "");
+      const sydneyTime = currentDateTime.toLocaleString("en-US", {
+        ...options,
+        timeZone: "Australia/Sydney",
+      });
 
       const utcTime = currentDateTime
         .toISOString()
@@ -75,10 +76,6 @@ const WeeklySchedule = () => {
 
     for (let i = 0; i < 7; i++) {
       const formattedDate = fetchFormattedDate(currentDate, selectedTimezone);
-
-      const currentDateTimeInTimezone = new Date(
-        currentDateTime.toLocaleString("en-US", { timeZone: selectedTimezone })
-      );
 
       const currentDateInTimezone = new Date(
         currentDate.toLocaleString("en-US", { timeZone: selectedTimezone })
@@ -131,7 +128,7 @@ const WeeklySchedule = () => {
     const startOfWeek = new Date(
       earliestDate.getFullYear(),
       earliestDate.getMonth(),
-      earliestDate.getDate() - ((earliestDate.getDay() + 5) % 7) + 1
+      earliestDate.getDate()
     );
 
     setCurrentWeekStartDate(startOfWeek);
@@ -141,7 +138,7 @@ const WeeklySchedule = () => {
     const startOfWeek = new Date(
       currentDateTime.getFullYear(),
       currentDateTime.getMonth(),
-      currentDateTime.getDate() - ((currentDateTime.getDay() + 5) % 7) + 1
+      currentDateTime.getDate()
     );
 
     setCurrentWeekStartDate(startOfWeek);
@@ -173,7 +170,9 @@ const WeeklySchedule = () => {
         <WeekdaysList weekdays={weekdays} schedule={schedule} />
       </div>
       <hr />
-      <button onClick={handleLoadWeek}>calendar</button>
+      <button onClick={handleLoadWeek} style={{ cursor: "pointer" }}>
+        calendar
+      </button>
     </>
   );
 };
